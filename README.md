@@ -12,32 +12,6 @@
 
 The name "Burhan" (برهان) was chosen because it means "proof" or "evidence" in Arabic. This project seeks to present the "proofs" of the Quran's rhetorical inimitability (*I'jaz*) by meticulously analyzing one of its most prominent figures of speech: the simile.
 
-### 🎯 Database Contents
-
-The database contains a collection of detailed rhetorical analyses for selected Quranic verses that include various forms of similes. Each analysis adheres to the principles of classical Arabic rhetoric (*Balaagha*) and systematically covers the following aspects:
-
-1.  **Precise classification of the simile type** (e.g., *Mursal*, *Baleegh*, *Dhimni*, *Tamthili*).
-2.  **Identification of the simile's components** (the four pillars):
-    - The Compared (*Al-Mushabbah*)
-    - The Compared-to (*Al-Mushabbah bihi*)
-    - The Tool of Comparison (*Adat al-Tashbih*)
-    - The Point of Resemblance (*Wajh al-Shabah*)
-3.  **The simile's syntactic position** and its impact on the verse's context.
-4.  **Explanation of the rhetorical function** and its purpose (e.g., to magnify, horrify, denigrate).
-5.  **Analysis of the aesthetic and illustrative effect** within the Quranic context.
-6.  **Elucidation of implicit and connotative meanings**, including symbolic or emotional significance.
-7.  **Comparison with similar instances** in the Quran, noting any rhetorical differences.
-8.  **Presentation of the views of classical scholars** of rhetoric and exegesis (*Mufassirun*), such as Al-Zamakhshari, Ibn Ashur, Al-Razi, and others.
-
-# Quranic Similes Dataset: Structured Rhetorical Analysis
-
-
-## 📖 Overview
-
-This repository hosts a high-fidelity, structured dataset dedicated to the rhetorical analysis of **Similes (Tashbih)** in the Holy Quran. It transforms complex, unstructured scholarly exegesis into a machine-readable **JSON format**, preserving the full depth of Arabic rhetorical studies.
-
-The dataset is designed to bridge the gap between traditional Islamic sciences and modern Computational Linguistics/NLP, providing a granular breakdown of imagery, syntactic structures, and scholarly interpretations with full Arabic vocalization (Tashkeel).
-
 ## ✨ Key Features
 
 - **Strict Schema Compliance:** Data follows a rigorous JSON schema ensuring consistency across all records.
