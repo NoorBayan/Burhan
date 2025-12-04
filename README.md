@@ -1,7 +1,8 @@
-# Burhan
 # 📖 Burhan: A Database of Rhetorical Analysis of Similes in the Holy Quran
 
-**برهان: قاعدة بيانات التحليل البلاغي للتشبيه في القرآن الكريم**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Data Format](https://img.shields.io/badge/Format-JSON-blue)](https://www.json.org/)
+[![Language](https://img.shields.io/badge/Language-Arabic%20(Diacritized)-green)]()
 
 ---
 
@@ -28,18 +29,82 @@ The database contains a collection of detailed rhetorical analyses for selected 
 7.  **Comparison with similar instances** in the Quran, noting any rhetorical differences.
 8.  **Presentation of the views of classical scholars** of rhetoric and exegesis (*Mufassirun*), such as Al-Zamakhshari, Ibn Ashur, Al-Razi, and others.
 
-### 🔧 Data Structure
+# Quranic Similes Dataset: Structured Rhetorical Analysis
 
-Currently, the data is stored as plain text files (`.txt`) to ensure easy access and portability.
 
--   **Naming Convention**: Each file is named after the Surah (chapter) and Ayah (verse) number for easy indexing (e.g., `Al-Baqarah-74.txt`).
--   **Format**: Each file contains the complete rhetorical analysis of the verse, fully formatted with Arabic diacritics (*Tashkeel*) to ensure linguistic precision and readability.
+## 📖 Overview
 
-*Example from a file:*
-```txt
-تَحْلِيلٌ بَلَاغِيٌّ لِلتَّشْبِيهِ فِي قَوْلِهِ تَعَالَى: {نِسَآؤُكُمْ حَرْثٌ لَّكُمْ...} (الْبَقَرَة: 223)
+This repository hosts a high-fidelity, structured dataset dedicated to the rhetorical analysis of **Similes (Tashbih)** in the Holy Quran. It transforms complex, unstructured scholarly exegesis into a machine-readable **JSON format**, preserving the full depth of Arabic rhetorical studies.
 
-### 1. تَصْنِيفُ نَوْعِ التَّشْبِيهِ:
-التَّشْبِيهُ فِي قَوْلِهِ تَعَالَى: {نِسَآؤُكُمْ حَرْثٌ لَّكُمْ} هُوَ **تَشْبِيهٌ بَلِيغٌ**.
-...
-(The full analysis continues inside the file)
+The dataset is designed to bridge the gap between traditional Islamic sciences and modern Computational Linguistics/NLP, providing a granular breakdown of imagery, syntactic structures, and scholarly interpretations with full Arabic vocalization (Tashkeel).
+
+## ✨ Key Features
+
+- **Strict Schema Compliance:** Data follows a rigorous JSON schema ensuring consistency across all records.
+- **Full Vocalization:** All Arabic text (Quranic verses and analysis) utilizes full diacritics (Tashkeel) to ensure linguistic accuracy.
+- **Granular Analysis:** Each simile is deconstructed into:
+  - **Classification:** Main types (e.g., *Tamthili*, *Mursal*) and sub-types with reasoning.
+  - **Components:** Subject (*Mushabbah*), Image (*Mushabbah Bihi*), Tool, and Point of Similarity.
+  - **Syntactic Structure:** Grammatical position and its rhetorical effect.
+  - **Imagery & Aesthetics:** Analysis of the sensory and psychological impact.
+- **Scholarly Insights:** Aggregated interpretations from major exegetes (e.g., Al-Zamakhshari, Ibn Ashur).
+- **Comparative Analysis:** Rhetorical comparisons with other Quranic verses.
+
+## 🗂️ Data Structure
+
+The data is organized into a hierarchical JSON structure. Below is a high-level overview of the schema:
+
+| Field | Description |
+| :--- | :--- |
+| `metadata` | Basic verse information (Chapter, Verse, Uthmani Text). |
+| `literary_preamble` | Intro and concluding literary context. |
+| `rhetorical_analysis` | The core container for the analysis. |
+| ↳ `similes` | Array of similes found in the verse. |
+| ↳ `classification` | Hierarchical classification (`main_type` & `types`). |
+| ↳ `components` | The four pillars of the simile (Subject, Image, Tool, Point). |
+| ↳ `functions` | Rhetorical functions (e.g., Vilification, Clarification). |
+| ↳ `scholarly_interpretations` | Quotes and insights from classical scholars. |
+
+## 📝 Sample Record
+
+Here is an example of a processed record (Surah Al-Baqarah, Verse 101), demonstrating the depth of the analysis:
+
+```json
+{
+  "record_id": 7,
+  "metadata": {
+    "chapter_no": 2,
+    "verse_no": 101,
+    "ayah_text_uthmani": "وَلَمَّا جَآءَهُمْ رَسُولٌ مِّنْ عِندِ ٱللَّهِ مُصَدِّقٌ لِّمَا مَعَهُمْ نَبَذَ فَرِيقٌ مِّنَ ٱلَّذِينَ أُوتُوا۟ ٱلْكِتَٰبَ كِتَٰبَ ٱللَّهِ وَرَآءَ ظُهُورِهِمْ كَأَنَّهُمْ لَا يَعْلَمُونَ",
+    "has_simile": true
+  },
+  "rhetorical_analysis": {
+    "similes": [
+      {
+        "id": 1,
+        "simile_identity": {
+          "segment_text": "كَأَنَّهُمْ لَا يَعْلَمُونَ"
+        },
+        "classification": {
+          "main_type": "تَشْبِيهٌ تَمْثِيلِيٌّ مُرْسَلٌ مُجْمَلٌ",
+          "types": [
+            {
+              "label": "تَشْبِيهٌ تَمْثِيلِيٌّ",
+              "reason": "لِأَنَّهُ لَا يَعْمِدُ إِلَى تَشْبِيهِ مُفْرَدٍ بِمُفْرَدٍ، بَلْ يُشَبِّهُ *هَيْئَةً مُرَكَّبَةً* بِهَيْئَةٍ مُرَكَّبَةٍ أُخْرَى..."
+            }
+          ]
+        },
+        "components": {
+          "tool": "كَأَنَّ",
+          "point_of_similarity": "الْهَيْئَةُ الْخَارِجِيَّةُ الدَّالَّةُ عَلَى الْإِعْرَاضِ التَّامِّ وَعَدَمِ الِاكْتِرَاثِ..."
+        },
+        "functions": [
+          {
+            "title": "التَّقْبِيحُ (Vilification)",
+            "detail": "يَعْمَلُ التَّشْبِيهُ عَلَى تَصْوِيرِ فِعْلِهِمْ فِي أَبْشَعِ صُورَةٍ مُمْكِنَةٍ..."
+          }
+        ]
+      }
+    ]
+  }
+}
