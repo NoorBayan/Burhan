@@ -1,171 +1,115 @@
-# 📖 Burhan: A Corpus-Pragmatic Dataset of Qur'anic Imagery
+
+# 📖 Burhan: The QR-Rhetoric Computational Semantic Dataset for Classical Arabic
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Data Format](https://img.shields.io/badge/Format-JSON-blue)](https://www.json.org/)
-[![Language](https://img.shields.io/badge/Language-Arabic%20(Diacritized)-green)]()
-[![Status](https://img.shields.io/badge/Status-Under%20Review-orange)]()
+[![Language](https://img.shields.io/badge/Language-Classical%20Arabic-green)]()
+[![Status](https://img.shields.io/badge/Status-Under%20Peer%20Review-orange)]()
 
 ---
 
 ### 👋 Introduction
 
-**Burhan** is a specialized, open-source annotated corpus focused on the cognitive and pragmatic analysis of figurative language (*Simile/Tashbih* and *Metaphor/Isti'ara*) in the Holy Quran.
+Welcome to **Burhan** (برهان), the official repository hosting the **QR-Rhetoric** dataset. 
 
-The name **"Burhan"** (برهان), meaning "decisive proof" in Arabic, reflects our mission: to provide rigorous, attested evidence of the Qur'an's rhetorical inimitability (*I'jaz*) through the lens of modern linguistics. By bridging classical Arabic rhetoric (*Balāgha*) with contemporary frameworks like **Relevance Theory** and **Conceptual Metaphor Theory**, Burhan aims to be a vital resource for computational linguists, religious scholars, and students alike.
+Figurative language—specifically metaphor and simile—introduces semantic non-compositionality that vector-based NLP models struggle to process. To bridge this "semantic gap" in Arabic NLP, we introduce a constraint-based engineering framework designed to formalize classical Arabic rhetorical semantics for machine processing.
+
+Extracted from the highly stable and orthographically consistent Quranic corpus, this dataset provides 1,367 rigorously annotated instances (402 similes, 965 metaphors) structured as Composite Semantic Objects (CSOs). By mapping concrete Source Domains to abstract Target Domains and encoding pragmatic functions alongside cognitive processing effort, this resource establishes a foundational semantic infrastructure for Explainable AI (XAI), Knowledge Graph (KG) integration, and Neurosymbolic reasoning in Arabic NLP.
 
 ---
+
+### 🏛️ Architectural Framework & Schema
+
+Unlike flat, binary-labeled datasets (e.g., Metaphor vs. Literal), this dataset is governed by a strict, constraint-aware **JSON Schema**. It operationalizes figurative analysis through four interlocked dimensions:
+
+1.  **Ontological Grounding:** Explicit $Source \rightarrow Target$ conceptual domain mappings utilizing a controlled 23$\times$18 ontology matrix.
+2.  **Structural Components:** Span-level character offsets anchoring Tenor, Vehicle, Ground, and rhetorical tools to the canonical text.
+3.  **Pragmatic Force:** Enum-restricted speech-act taxonomy (e.g., *Directive*, *Assertive*) coupling grammatical form with communicative intent.
+4.  **Cognitive Complexity:** An operationalized ordinal variable (`processing_effort`) derived from structural density to guide curriculum learning.
+
+---
+
 
 ### 🧪 Reproducibility & Research Data
 
-To ensure transparency and scientific reproducibility (Open Science), we have provided the raw data alongside the statistical analysis code used to generate the findings in the paper.
+In strict adherence to Open Science and FAIR data principles, we provide the raw data alongside the schema specifications and analytical scripts required for full reproducibility of the statistics reported in the study.
 
-- **Dataset Availability:** The full JSON corpus is hosted in this repository.
-- **Analysis Notebook:** The statistical results (frequency distributions, form-function mapping, and correlation matrices) cited in the paper can be reproduced using the accompanying Jupyter/Colab Notebook.
-  - [**View Analysis Notebook**](#) *(Link to your Google Colab/Cloud file)*
+- 📦 **Dataset Availability:** The complete JSON corpus is hosted in the `data/` directory of this repository.
+- 📜 **Schema Definition:** The formal JSON Schema validator (`schema.json`) is provided to ensure strict data typing and relational integrity.
+- 📊 **Exploratory Data Analysis (EDA):** We provide an interactive environment to explore the dataset's structural dimensions, including the distribution of cognitive effort, the form-function mappings, and the semantic ontology matrices.
 
-> **Note:** As the paper is currently under review, this data is provided for peer review validation and academic research purposes. The notebook demonstrates how the raw JSON data translates into the pragmatic patterns discussed in the study.
+To facilitate peer review and independent verification of the corpus statistics (e.g., the prevalence of verbal structures in metaphors vs. particle-driven similes), we have published a comprehensive **Jupyter Notebook** hosted on Google Colab.
 
----
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1oFBLq1i1ZkPQAMJMAXxJGyxtsdKJWp_n?usp=sharing)
 
-### 🕌 Ethical Usage & Sanctity of Text
-
-The Holy Quran is a sacred text held in reverence by billions. While we encourage computational analysis, NLP modeling, and linguistic inquiry, we kindly request all users to adhere to the following ethical guidelines:
-
-1.  **Integrity:** Ensure that the diacritized text of the Verses (*Ayat*) remains unaltered in any display or processing pipeline.
-2.  **Contextual Awareness:** Algorithmic interpretations should be cross-referenced with the provided authoritative exegetical notes (*Tafsir*) to avoid misleading conclusions.
-3.  **Respectful Representation:** When visualizing data or publishing results, please maintain a tone of respect appropriate to the source material.
 
 ---
 
-### ✨ Key Features
-
-- **Multi-Layered Annotation:** Integrates three analytical layers:
-  - **Structural:** Morpho-syntactic components (Subject, Image, Tool, Point of Similarity).
-  - **Conceptual:** Source and Target domains based on Conceptual Metaphor Theory (CMT).
-  - **Pragmatic:** Illocutionary functions (e.g., *Taqrīr*, *Tawbīkh*) and cognitive effects.
-- **Strict Schema Compliance:** Data follows a rigorous JSON schema ensuring consistency for machine learning tasks.
-- **Full Vocalization:** All Arabic text utilizes full diacritics (*Tashkeel*) to ensure linguistic and prosodic accuracy.
-- **Scholarly Grounding:** Annotations are verified against major classical exegeses to ensure hermeneutic validity.
 
 ---
 
-### 🗂️ Data Structure & Samples
+### 🕌 Ethical Usage & Corpus Integrity
 
-The corpus is richly annotated. Below are actual samples from the dataset illustrating the depth of analysis for both Similes and Metaphors.
+The Holy Quran is a sacred text held in reverence by billions. The Quranic corpus was selected for this data engineering task due to its maximal linguistic consistency and orthographic stability, providing a noise-reduced environment for NLP benchmarking. We request all researchers utilizing this repository to adhere to the following guidelines:
 
-#### 1. Simile Sample (*Tashbih*)
-**Context:** Surah Al-Baqarah (2:13) - A complex compound simile analyzing the hypocrites' view of faith.
+1.  **Textual Integrity:** Ensure that the Uthmani script and diacritics (*Tashkeel*) of the text segments remain unaltered in any preprocessing pipeline.
+2.  **Contextual Accuracy:** Algorithmic inferences should not be presented as definitive theological exegesis, but rather as computational linguistic models grounded in classical rhetorical taxonomy.
+3.  **Respectful Representation:** Maintain an academic and respectful tone when publishing visualizations or downstream applications derived from this dataset.
 
-```json
-{
-  "record_id": 0,
-  "metadata": {
-    "chapter_no": 2,
-    "verse_no": 13,
-    "ayah_text_uthmani": "وَإِذَا قِيلَ لَهُمْ ءَامِنُوا۟ كَمَآ ءَامَنَ ٱلنَّاسُ قَالُوٓا۟ أَنُؤْمِنُ كَمَآ ءَامَنَ ٱلسُّفَهَآءُ...",
-    "has_simile": true
-  },
-  "rhetorical_analysis": {
-    "similes": [
-      {
-        "id": 1,
-        "segment_text": "أَنُؤْمِنُ كَمَآ ءَامَنَ ٱلسُّفَهَآءُ",
-        "classification": {
-          "main_type": "تَشْبِيهٌ تَمْثِيلِيٌّ مُرْسَلٌ",
-          "processing_effort": "High",
-          "reason": "Simulating a complex state of belief as perceived by them."
-        },
-        "components": {
-          "subject": "Our Hypothetical Faith",
-          "image": "The Faith of the Foolish (as they perceive it)",
-          "source_domain": "PSYCHOLOGY_AND_EMOTION",
-          "target_domain": "SPIRITUAL_PSYCHOLOGY",
-          "tool": "Particle Ka-Ma (كَمَا)",
-          "point_of_similarity": "The act of believing that leads to loss of worldly interest."
-        },
-        "syntactic_structure": {
-          "grammatical_structure": "verbal_structure",
-          "rhetorical_effect": "Focuses on the 'manner' of faith to mock the believers."
-        },
-        "functions": [
-          {
-            "title": "Vilification & Mockery",
-            "pragmatic_tag": "Condemnation & Criticism",
-            "speech_act": "EXPRESSIVE_DEPRECATION",
-            "detail": "It exposes their internal arrogance, viewing true faith as stupidity."
-          }
-        ],
-        "symbolism_and_implications": {
-          "implicature_strength": "weak_poetic_array",
-          "implications": [
-            {
-              "type": "Inversion of Values",
-              "content": "What is actually wisdom (faith) is perceived by them as foolishness."
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
-```
+---
 
-#### 2. Metaphor Sample (*Isti'ara*)
-**Context:** Surah Al-Fatiha (1:6) - The foundational prayer for guidance, showcasing an explicit original metaphor.
 
-```json
-{
-  "record_id": 1,
-  "metadata": {
-    "chapter_no": 1,
-    "verse_no": 6,
-    "ayah_text_uthmani": "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
-    "has_simile": false
-  },
-  "rhetorical_analysis": {
-    "similes": [
-      {
-        "id": 1,
-        "segment_text": "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
-        "classification": {
-          "main_type": "اِسْتِعَارَةٌ تَصْرِيحِيَّةٌ أَصْلِيَّةٌ",
-          "processing_effort": "Medium",
-          "reason": "The 'True Religion' (Subject) is omitted, and 'The Straight Path' (Image) is explicitly stated."
-        },
-        "components": {
-          "subject": "Islam / The True Religion (Omitted)",
-          "image": "The Straight Physical Path",
-          "source_domain": "TRAVEL_AND_PATH",
-          "target_domain": "REVELATION_AND_GUIDANCE",
-          "metaphor_linguistic_form": "nominal_common",
-          "relation": "Similarity: Delivering the traveler to the destination safely."
-        },
-        "syntactic_structure": {
-          "grammatical_position": "Second Object of the verb 'Guide'",
-          "rhetorical_effect": "Make the 'Path' the ultimate goal of the guidance."
-        },
-        "functions": [
-          {
-            "title": "Personification & Clarification",
-            "pragmatic_tag": "Clarification & Imagery",
-            "speech_act": "ASSERTIVE",
-            "detail": "Converting an abstract concept (Truth) into a tangible sensory image (Path)."
-          }
-        ],
-        "imagery_and_aesthetics": {
-          "features": [
-            {
-              "title": "Dynamic Imagery",
-              "description": "Depicts faith not as a static state, but as a continuous journey."
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
-```
+### 🗂️ Data Structure & Schema Specifications
 
+The dataset represents figurative language as deeply nested **Composite Semantic Objects (CSOs)**. Each record in the JSON file adheres to a strict schema, ensuring deterministic validation and machine-readability. 
+
+The data is logically divided into Metadata, Literary Preamble, and the Core Rhetorical Analysis (which accommodates both Similes and Metaphors). Below is an overview of the schema fields and the **Controlled Vocabularies** enforced across the dataset.
+
+#### 1. Core Record Structure
+Every entry in the corpus follows this root architecture:
+- `record_id` (Integer): Unique identifier for the instance.
+- `metadata` (Object): Contains canonical alignment including `chapter_no`, `verse_no`, `ayah_text_uthmani`, and a `has_simile` boolean flag.
+- `literary_preamble` (Object): Optional contextual strings (`intro_text`, `conclusion_text`).
+- `rhetorical_analysis` (Array of Objects): The primary analytical engine containing structural, conceptual, syntactic, and pragmatic layers.
+
+#### 2. The Rhetorical Object (CSO Layers)
+Within `rhetorical_analysis`, each figurative device (Simile or Metaphor) is parsed into the following constrained dimensions:
+
+**A. Identity & Classification**
+- `segment_text`: The exact text span where the figurative language occurs.
+- `main_type`: The classical Arabic rhetorical classification (e.g., *Isti'ara Tasrihiyya*, *Tashbih Mursal*).
+- `processing_effort`: Derived cognitive complexity score.
+  - *Allowed Values:* `Low`, `Medium`, `High`.
+
+**B. Semantic Components & Ontological Mapping**
+This layer explicitly maps the cross-domain transfer.
+- `subject` / `image`: The Tenor (Moshabbah) and Vehicle (Moshabbah Bih).
+- `point_of_similarity`: The conceptual overlap (Ground).
+- `tool` / `borrowed_text`: The explicit particle (Simile) or the borrowed word (Metaphor).
+- `sensory_mode`: The perceptual channel of the image.
+  - *Allowed Values:* `visual`, `auditory`, `tactile`, `kinetic`, `gustatory`, `abstract_cognitive`, `composite`.
+- `source_domain` & `target_domain`: Explicit mapping matrix.
+  - *Target Domains:* `SPIRITUAL_PSYCHOLOGY`, `DEEDS_AND_BEHAVIOR`, `ESCHATOLOGY`, `THEOLOGY`, `REVELATION_AND_GUIDANCE`, `COSMOLOGY_AND_NATURE`, `HUMAN_AGENTS_AND_GROUPS`, `WORLDLY_LIFE`.
+  - *Source Domains:* Drawn from a 23-domain inventory including `BODY_AND_PHYSIOLOGY`, `HISTORY_AND_TRADITION`, `NATURE_FLORA`, `TRAVEL_AND_PATH`, `WAR_AND_CONFLICT`, etc.
+
+**C. Morphosyntactic Realization**
+- `grammatical_position`: The functional syntax role in the sentence.
+- `grammatical_structure`: The broader syntactic configuration.
+  - *Allowed Values:* `verbal_structure`, `nominal_structure`, `adverbial_structure`, `adjectival_structure`, `discourse_structure`.
+- *(For Metaphors Only)* `metaphor_linguistic_form`: The precise morphological form of the borrowed text (e.g., `verbal_past`, `nominal_masdar`, `idafa_simple`).
+
+**D. Pragmatic Force & Speech Acts**
+This multi-valued array maps grammatical form to communicative intent.
+- `pragmatic_function_tag`: The rhetorical purpose.
+  - *Allowed Values:* `Clarification & Imagery`, `Condemnation & Criticism`, `Warning & Intimidation`, `Glorification & Exaltation`, `Argumentation & Persuasion`, `Affirmation & Establishment`, `Incentive & Attraction`, `Consolation & Reassurance`.
+- `speech_act`: The illocutionary force.
+  - *Allowed Values:* `ASSERTIVE`, `DIRECTIVE_DETERRENCE`, `DIRECTIVE_INDUCEMENT`, `EXPRESSIVE_DEPRECATION`, `EXPRESSIVE_EXALTATION`.
+
+**E. Symbolism, Implications & Scholarly Grounding**
+- `implicature_strength`: Evaluates the depth of the symbolic inference.
+  - *Allowed Values:* `weak_poetic_array`, `moderate_enriched`, `strong_determinate`.
+- `comparative_analysis`: Cross-referencing similar structures across the corpus.
+- `scholarly_interpretations`: Array of grounded validations from authoritative exegeses (*Tafsir*), capturing the `scholar`, `book`, and `full_text` of the interpretation.
 
 
 
@@ -173,5 +117,5 @@ The corpus is richly annotated. Below are actual samples from the dataset illust
 
 ### 🤝 Contributing
 
-We welcome contributions! If you find a typo or wish to propose an enhanced analysis for a verse, please open an **Issue** or submit a **Pull Request**. Please ensure all contributions cite a valid linguistic or exegetical source.
-```
+We welcome contributions from the computational linguistics and semantic web communities! If you find a schema inconsistency or wish to propose an extension to the domain ontology, please open an **Issue** or submit a **Pull Request**. 
+
