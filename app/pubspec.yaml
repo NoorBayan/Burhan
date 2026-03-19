@@ -1,0 +1,67 @@
+name: ijaaz_app
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  shared_preferences: ^2.3.2
+  http: ^1.2.1
+  flutter_svg: ^2.0.10
+  pdf: ^3.8.4
+  csv: ^5.0.1
+  provider: ^6.1.1
+  share_plus: ^10.1.4 # إضافة مكتبة المشاركة
+  fl_chart: ^0.69.0 # إضافة مكتبة الرسوم البيانية
+  flutter_native_splash: ^2.4.0
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/Gemini_Generated_Image_n6pe37n6pe37n6pe.png
+  android_12:
+    color: "#FFFFFF"
+    image: assets/images/Gemini_Generated_Image_n6pe37n6pe37n6pe.png
+  fullscreen: true
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/data/
+    - assets/data/Amthal-main/data/processed/
+    - assets/data/tafsir/ar-tafseer-al-saddi/
+    - assets/data/tafsir/ar-tafsir-ibn-kathir/
+    - assets/data/tafsir/ar-tafsir-al-tabari/
+    - assets/data/tafsir/ar-tafseer-al-qurtubi/
+    - assets/data/tafsir/ar-tafsir-al-baghawi/
+    - assets/data/tafsir/ar-tafsir-al-wasit/
+    - assets/data/tafsir/ar-tafseer-tanwir-al-miqbas/
+    - assets/images/
+    - assets/fonts/
+  fonts:
+    - family: UthmanicHafs
+      fonts:
+        - asset: assets/fonts/UthmanicHafs1 Ver13.ttf
+    - family: AmiriQuran
+      fonts:
+        - asset: assets/fonts/AmiriQuran.ttf
+    - family: Kitab
+      fonts:
+        - asset: assets/fonts/Kitab-Regular.ttf
+        - asset: assets/fonts/Kitab-Bold.ttf
+          weight: 700
+    - family: SurahNames
+      fonts:
+        - asset: assets/fonts/surah-name-v1.ttf
